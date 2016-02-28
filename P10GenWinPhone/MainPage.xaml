@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="P10GenWinPhone.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:P10GenWinPhone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="BaseTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="TextTrimming" Value="None"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="LineStackingStrategy" Value="MaxHeight"/>
+            <Setter Property="TextLineBounds" Value="Full"/>
+        </Style>
+        <Style x:Key="SubheaderTextBlockStyle" TargetType="TextBlock" 
+       BasedOn="{StaticResource BaseTextBlockStyle}">
+            <Setter Property="FontSize" Value="34"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="OpticalMarginAlignment" Value="TrimSideBearings"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Die 10 Phasen sind:" Style="{ThemeResource SubheaderTextBlockStyle}"></TextBlock>
+          <ListView Grid.Row="1" Name="ListBox" ItemsSource="{Binding}">
+              <ListView.ItemTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding}" Style="{ThemeResource BaseTextBlockStyle}"></TextBlock>
+                  </DataTemplate>
+              </ListView.ItemTemplate>
+              </ListView>
+        <Button Grid.Row="2" Content="Neue Phasen" Click="ButtonBase_OnClick"/>
+    </Grid>
+</Page>

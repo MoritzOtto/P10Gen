@@ -1,6 +1,5 @@
-﻿using System.Windows;
-using P10Gen.Core.Services;
-using P10Gen.Core.UtilAdapter;
+﻿using System.Threading.Tasks;
+using System.Windows;
 
 namespace P10Gen.UI
 {
@@ -12,10 +11,13 @@ namespace P10Gen.UI
         public MainWindow()
         {
             DataContext = 
-                new MainWindowViewModel(
-                    new CreateTenPhases(new CreatePhaseService(new RandomAdapter(),
-                        new CreateCombinationService(new RandomAdapter()))));
+                new MainWindowViewModel();
             InitializeComponent();
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            ((MainWindowViewModel) DataContext).NewPhases();
         }
     }
 }
